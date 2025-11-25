@@ -1,0 +1,78 @@
+
+# 2025-11-25 05:24:15.343280
++Code the following app
++```
++Prompt: Create a fully functional Snake game contained in a single file.
++
++Technical Requirements:
++
++Use the HTML5 <canvas> element for the game board. Set the canvas to 400x400 pixels.
++
++Do not use any external libraries or images. Use standard CSS and JavaScript only.
++
++The game logic should rely on a grid system (e.g., 20px by 20px tiles).
++
++Game Rules:
++
++The snake starts as a chain of 3 green squares in the center.
++
++The snake moves automatically in the current direction.
++
++Use the Arrow Keys on the keyboard to change the snake's direction (Up, Down, Left, Right). Prevent the snake from reversing into itself (e.g., cannot go Left if currently going Right).
++
++Place a red square randomly on the grid to represent "Food".
++
++When the snake's head enters the same grid space as the Food:
++
++The snake grows by one square.
++
++The score increases by 1.
++
++New Food is generated in a random empty spot.
++
++Game Over Conditions: The game stops if the snake hits the walls of the canvas OR hits its own tail.
++
++Display the Score text above the canvas.
++Place the game on the home page.
++```
++
++Generate an app logo and update the app metadata title and description.
+
+# 2025-11-25 05:24:15.343860
++Code the following app
++```
++Prompt: Create a fully functional Snake game contained in a single file.
++
++Technical Requirements:
++
++Use the HTML5 <canvas> element for the game board. Set the canvas to 400x400 pixels.
++
++Do not use any external libraries or images. Use standard CSS and JavaScript only.
++
++The game logic should rely on a grid system (e.g., 20px by 20px tiles).
++
++Game Rules:
++
++The snake starts as a chain of 3 green squares in the center.
++
++The snake moves automatically in the current direction.
++
++Use the Arrow Keys on the keyboard to change the snake's direction (Up, Down, Left, Right). Prevent the snake from reversing into itself (e.g., cannot go Left if currently going Right).
++
++Place a red square randomly on the grid to represent "Food".
++
++When the snake's head enters the same grid space as the Food:
++
++The snake grows by one square.
++
++The score increases by 1.
++
++New Food is generated in a random empty spot.
++
++Game Over Conditions: The game stops if the snake hits the walls of the canvas OR hits its own tail.
++
++Display the Score text above the canvas.
++Place the game on the home page.
++```
++
++Generate an app logo and update the app metadata title and description.
