@@ -151,9 +151,7 @@ export default function Home() {
         }
         document.addEventListener('keydown',keyHandler);
         document.getElementById('startBtn').addEventListener('click',()=>{
-          if(gameInterval) clearInterval(gameInterval);
-          initGame();
-          gameInterval=setInterval(()=>{update();draw();},200);
+          location.reload();
         });
         document.getElementById('tryAgainBtn').addEventListener('click', resetGame);
       ` }} />
