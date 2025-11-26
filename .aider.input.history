@@ -382,3 +382,11 @@
 +4. Background Overlay:
 +
 +Make the overlay background very dark but slightly transparent (e.g., rgba(0, 0, 0, 0.9)) so the game grid is barely visible behind it.
+
+# 2025-11-26 06:28:34.049014
++if the button for start/restart game is trigger it will automatically refresh the game
++
+
+# 2025-11-26 06:28:34.049449
++if the button for start/restart game is trigger it will automatically refresh the game
++
