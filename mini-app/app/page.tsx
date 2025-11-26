@@ -12,7 +12,7 @@ export default function Home() {
       <div className="flex flex-col items-center gap-2">
         <div id="scorePanel" className="text-white text-lg font-semibold">SCORE: <span id="score">0</span></div>
         <canvas id="gameCanvas" width={400} height={400} className="bg-black border-2 border-white rounded-lg shadow-inner" />
-        <button id="tryAgainBtn" className="hidden mt-4 px-4 py-2 rounded-md uppercase font-bold tracking-wider" style={{backgroundColor:'#ef4444', color:'white'}}>TRY AGAIN</button>
+        <button id="tryAgainBtn" className="hidden mt-4 px-4 py-2 rounded-md uppercase font-bold tracking-wider" style={{backgroundColor:'#ef4444', color:'white', borderRadius:'4px'}}>TRY AGAIN</button>
       </div>
       <button id="startBtn" className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Start / Restart Game</button>
       <script dangerouslySetInnerHTML={{ __html: `
@@ -107,8 +107,8 @@ export default function Home() {
             ctx.fillRect(0,0,canvas.width,canvas.height);
             ctx.fillStyle='#ff4d4d';
             ctx.font='48px sans-serif';
-            ctx.shadowColor='rgba(255,50,50,0.7)';
-            ctx.shadowBlur=10;
+            ctx.shadowColor='rgba(255,0,0,0.5)';
+            ctx.shadowBlur=20;
             ctx.textAlign='center';
             ctx.textBaseline='middle';
             ctx.globalAlpha=Math.min(fade,1);
