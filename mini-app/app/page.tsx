@@ -22,6 +22,7 @@ export default function Home() {
         let food;
         let score;
         let gameOver=false;
+        let isGameRunning=false;
         let finalScore=0;
         let fade=0;
         const canvas=document.getElementById('gameCanvas');
@@ -81,14 +82,33 @@ export default function Home() {
           // snake
           ctx.shadowColor='rgba(0,255,0,0.6)';
           ctx.shadowBlur=10;
-          snake.forEach(s=>{
+          snake.forEach((s,i)=>{
             const x=s.x*tileSize+tileSize/2;
             const y=s.y*tileSize+tileSize/2;
-            const r=tileSize/2-2;
+            let r=tileSize/2-2;
+            if(i===0){
+              ctx.fillStyle='#66ff66';
+              r=tileSize/2-2;
+            } else if(i===snake.length-1){
+              ctx.fillStyle='darkgreen';
+              r=tileSize/2-4;
+            } else {
+              ctx.fillStyle='green';
+            }
             ctx.beginPath();
             ctx.arc(x,y,r,0,Math.PI*2);
-            ctx.fillStyle='green';
             ctx.fill();
+            if(i===0){
+              // eyes
+              ctx.fillStyle='black';
+              const eyeOffset=tileSize/4;
+              ctx.beginPath();
+              ctx.arc(x-eyeOffset,y-eyeOffset,1,0,Math.PI*2);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.arc(x+eyeOffset,y-eyeOffset,1,0,Math.PI*2);
+              ctx.fill();
+            }
           });
           ctx.shadowBlur=0;
           // food
@@ -142,16 +162,20 @@ export default function Home() {
           }
         }
         function keyHandler(e){
-          if(gameOver) return;
           const key=e.key;
+          if(gameOver) return;
           if(key==='ArrowUp'&&direction!=='down') direction='up';
           if(key==='ArrowDown'&&direction!=='up') direction='down';
           if(key==='ArrowLeft'&&direction!=='right') direction='left';
           if(key==='ArrowRight'&&direction!=='left') direction='right';
+          if(!isGameRunning && (key.startsWith('Arrow'))){
+            isGameRunning=true;
+            gameInterval=setInterval(()=>{update();draw();},200);
+          }
         }
         document.addEventListener('keydown',keyHandler);
         document.getElementById('startBtn').addEventListener('click',()=>{
-          location.reload();
+          resetGame();
         });
         document.getElementById('tryAgainBtn').addEventListener('click', resetGame);
       ` }} />
