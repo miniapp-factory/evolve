@@ -7,11 +7,12 @@ export default function Home() {
   // Game component
   return (
     <main className="flex flex-col items-center gap-4 px-4 grow bg-gray-800">
-      <h1 className="text-2xl font-bold">{title}</h1>
+      <h1 className="text-2xl font-bold text-white shadow">{title}</h1>
       <p className="text-muted-foreground">{description}</p>
       <div className="flex flex-col items-center gap-2">
         <div id="scorePanel" className="text-white text-lg font-semibold">SCORE: <span id="score">0</span></div>
         <canvas id="gameCanvas" width={400} height={400} className="bg-black border-2 border-white rounded-lg shadow-inner" />
+        <button id="tryAgainBtn" className="hidden mt-4 px-4 py-2 rounded-md uppercase font-bold tracking-wider" style="background-color:#ef4444;color:white;">TRY AGAIN</button>
       </div>
       <button id="startBtn" className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Start / Restart Game</button>
       <script dangerouslySetInnerHTML={{ __html: `
@@ -28,6 +29,7 @@ export default function Home() {
         const tileSize=20;
         const cols=canvas.width/tileSize;
         const rows=canvas.height/tileSize;
+        const neonColors = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00', '#ffa500'];
         function initGame(){
           snake=[{x:Math.floor(cols/2),y:Math.floor(rows/2)},{x:Math.floor(cols/2)-1,y:Math.floor(rows/2)},{x:Math.floor(cols/2)-2,y:Math.floor(rows/2)}];
           direction='right';
@@ -37,6 +39,14 @@ export default function Home() {
           finalScore=0;
           document.getElementById('score').textContent='0';
           placeFood();
+        }
+        function resetGame(){
+          gameOver=false;
+          fade=0;
+          finalScore=0;
+          document.getElementById('tryAgainBtn').classList.add('hidden');
+          initGame();
+          gameInterval=setInterval(()=>{update();draw();},200);
         }
         function placeFood(){
           const empty=[];
@@ -48,6 +58,7 @@ export default function Home() {
             }
           }
           food=empty[Math.floor(Math.random()*empty.length)];
+          food.color = neonColors[Math.floor(Math.random()*neonColors.length)];
         }
         function draw(){
           // grid
@@ -85,21 +96,24 @@ export default function Home() {
           const r=tileSize/2-2;
           ctx.beginPath();
           ctx.arc(food.x*tileSize+tileSize/2, food.y*tileSize+tileSize/2, r*pulse, 0, Math.PI*2);
-          ctx.fillStyle='red';
+          ctx.fillStyle=food.color;
           ctx.shadowColor='rgba(255,0,0,0.6)';
           ctx.shadowBlur=10;
           ctx.fill();
           ctx.shadowBlur=0;
           // game over overlay
           if(gameOver){
-            ctx.fillStyle='rgba(0,0,0,0.5)';
+            ctx.fillStyle='rgba(0,0,0,0.9)';
             ctx.fillRect(0,0,canvas.width,canvas.height);
-            ctx.fillStyle='white';
+            ctx.fillStyle='#ff4d4d';
             ctx.font='48px sans-serif';
+            ctx.shadowColor='rgba(255,50,50,0.7)';
+            ctx.shadowBlur=10;
             ctx.textAlign='center';
             ctx.textBaseline='middle';
             ctx.globalAlpha=Math.min(fade,1);
             ctx.fillText('GAME OVER', canvas.width/2, canvas.height/2 - 30);
+            ctx.fillStyle='white';
             ctx.font='32px sans-serif';
             ctx.fillText('Score: '+finalScore, canvas.width/2, canvas.height/2 + 20);
             fade+=0.02;
@@ -141,6 +155,7 @@ export default function Home() {
           initGame();
           gameInterval=setInterval(()=>{update();draw();},200);
         });
+        document.getElementById('tryAgainBtn').addEventListener('click', resetGame);
       ` }} />
     </main>
   );
