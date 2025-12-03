@@ -12,6 +12,12 @@ export default function Home() {
       <div className="flex flex-col items-center gap-2">
         <div id="scorePanel" className="text-white text-lg font-semibold">SCORE: <span id="score">0</span></div>
         <canvas id="gameCanvas" width={400} height={400} className="bg-black border-2 border-white rounded-lg shadow-inner" />
+        <div id="mobile-controls">
+          <button id="btnUp">↑</button>
+          <button id="btnLeft">←</button>
+          <button id="btnDown">↓</button>
+          <button id="btnRight">→</button>
+        </div>
         <button id="tryAgainBtn" className="hidden mt-4 px-4 py-2 rounded-md uppercase font-bold tracking-wider" style={{backgroundColor:'#ef4444', color:'white', borderRadius:'4px'}}>TRY AGAIN</button>
       </div>
       <button id="startBtn" className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Start / Restart Game</button>
@@ -177,6 +183,14 @@ export default function Home() {
         document.getElementById('startBtn').addEventListener('click',()=>{
           resetGame();
         });
+        document.getElementById('btnUp').addEventListener('touchstart',()=>{keyHandler({key:'ArrowUp'});});
+        document.getElementById('btnUp').addEventListener('click',()=>{keyHandler({key:'ArrowUp'});});
+        document.getElementById('btnLeft').addEventListener('touchstart',()=>{keyHandler({key:'ArrowLeft'});});
+        document.getElementById('btnLeft').addEventListener('click',()=>{keyHandler({key:'ArrowLeft'});});
+        document.getElementById('btnDown').addEventListener('touchstart',()=>{keyHandler({key:'ArrowDown'});});
+        document.getElementById('btnDown').addEventListener('click',()=>{keyHandler({key:'ArrowDown'});});
+        document.getElementById('btnRight').addEventListener('touchstart',()=>{keyHandler({key:'ArrowRight'});});
+        document.getElementById('btnRight').addEventListener('click',()=>{keyHandler({key:'ArrowRight'});});
         document.getElementById('tryAgainBtn').addEventListener('click', resetGame);
       ` }} />
     </main>
