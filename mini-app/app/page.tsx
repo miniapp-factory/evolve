@@ -192,6 +192,31 @@ export default function Home() {
         document.getElementById('btnRight').addEventListener('touchstart',()=>{keyHandler({key:'ArrowRight'});});
         document.getElementById('btnRight').addEventListener('click',()=>{keyHandler({key:'ArrowRight'});});
         document.getElementById('tryAgainBtn').addEventListener('click', resetGame);
+        <style>
+        #mobile-controls { display: none; }
+        @media (max-width: 768px) {
+          #mobile-controls {
+            display: grid;
+            grid-template-areas:
+              ". up ."
+              "left down right";
+            gap: 10px;
+          }
+          #mobile-controls button {
+            min-width: 60px;
+            min-height: 60px;
+            background: transparent;
+            border: 1px solid #00f3ff;
+            color: white;
+            font-size: 24px;
+            touch-action: manipulation;
+          }
+          #mobile-controls #btnUp { grid-area: up; }
+          #mobile-controls #btnLeft { grid-area: left; }
+          #mobile-controls #btnDown { grid-area: down; }
+          #mobile-controls #btnRight { grid-area: right; }
+        }
+        </style>
       ` }} />
     </main>
   );
