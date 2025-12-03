@@ -464,3 +464,89 @@
 +The Tail (Last Segment):
 +
 +Make the very last segment of the snake slightly smaller (e.g., 14px instead of 20px) or a darker shade of green to visually indicate it is the end of the tail.
+
+# 2025-12-03 02:50:49.053124
++Add Mobile-Only On-Screen Controls to the game. These controls must be completely invisible on desktop computers and only appear on smaller screens.
++
++1. HTML Structure:
++
++Add a container div ID mobile-controls below the game canvas.
++
++Inside, create 4 buttons with IDs: btnUp, btnLeft, btnDown, btnRight.
++
++Use standard arrow symbols (e.g., ↑, ↓, ←, →) as the text.
++
++2. CSS Visibility (Critical):
++
++Default State (Desktop): Set #mobile-controls { display: none; }. This ensures they are hidden by default on laptops and PC monitors.
++
++Mobile State (Media Query): Add a media query for screens smaller than 768px (e.g., @media (max-width: 768px)).
++
++Inside this query, set #mobile-controls to display: grid.
++
++This ensures the buttons only appear on mobile devices or small windows.
++
++3. CSS Styling (Neon D-Pad):
++
++Grid Layout: When visible, arrange the buttons in a 3-column, 2-row grid to form a "Cross" or "D-Pad" shape:
++
++Row 1: [Empty] [Up] [Empty]
++
++Row 2: [Left] [Down] [Right]
++
++Button Style: Large square buttons (min 60px), transparent background with Neon Blue borders (1px solid #00f3ff) and white text.
++
++Touch Action: Add touch-action: manipulation; to the buttons to prevent browser zooming on double-taps.
++
++4. JavaScript Logic:
++
++Add touchstart (and click as fallback) event listeners to these buttons.
++
++Functionality:
++
++Tapping a button must trigger the same direction change as the corresponding Keyboard Arrow key.
++
++Auto-Start: Tapping a button should also set isGameRunning = true (start the game) if it hasn't started yet.
+
+# 2025-12-03 02:50:49.054461
++Add Mobile-Only On-Screen Controls to the game. These controls must be completely invisible on desktop computers and only appear on smaller screens.
++
++1. HTML Structure:
++
++Add a container div ID mobile-controls below the game canvas.
++
++Inside, create 4 buttons with IDs: btnUp, btnLeft, btnDown, btnRight.
++
++Use standard arrow symbols (e.g., ↑, ↓, ←, →) as the text.
++
++2. CSS Visibility (Critical):
++
++Default State (Desktop): Set #mobile-controls { display: none; }. This ensures they are hidden by default on laptops and PC monitors.
++
++Mobile State (Media Query): Add a media query for screens smaller than 768px (e.g., @media (max-width: 768px)).
++
++Inside this query, set #mobile-controls to display: grid.
++
++This ensures the buttons only appear on mobile devices or small windows.
++
++3. CSS Styling (Neon D-Pad):
++
++Grid Layout: When visible, arrange the buttons in a 3-column, 2-row grid to form a "Cross" or "D-Pad" shape:
++
++Row 1: [Empty] [Up] [Empty]
++
++Row 2: [Left] [Down] [Right]
++
++Button Style: Large square buttons (min 60px), transparent background with Neon Blue borders (1px solid #00f3ff) and white text.
++
++Touch Action: Add touch-action: manipulation; to the buttons to prevent browser zooming on double-taps.
++
++4. JavaScript Logic:
++
++Add touchstart (and click as fallback) event listeners to these buttons.
++
++Functionality:
++
++Tapping a button must trigger the same direction change as the corresponding Keyboard Arrow key.
++
++Auto-Start: Tapping a button should also set isGameRunning = true (start the game) if it hasn't started yet.
